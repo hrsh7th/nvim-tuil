@@ -1,4 +1,4 @@
-local Class = require'tuil.oop.class'
+local Class = require'lank.tuil.oop.class'
 
 local Emitter = Class()
 
