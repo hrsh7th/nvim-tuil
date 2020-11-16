@@ -6,5 +6,7 @@ return function(id, timeout, callback)
     timers[id]:close()
   end
   timers[id] = vim.loop.new_timer()
-  timers[id]:start(timeout, 0, callback)
+  timers[id]:start(timeout, 0, function()
+    vim.defer_fn(callback, 0)
+  end)
 end

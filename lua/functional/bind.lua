@@ -1,10 +1,7 @@
-local tuil = {}
-
-function tuil.bind(func, ...)
+return function(func, ...)
   local binds = ...
   return function(...)
     func(binds, ...)
   end
 end
 
-return tuil

@@ -1,5 +1,5 @@
-local Class = require'lank.tuil.oop.class'
-local Emitter = require'lank.tuil.event.emitter'
+local Class = require'tuil.oop.class'
+local Emitter = require'tuil.event.emitter'
 
 local Autocmd = Class(Emitter)
 
@@ -10,8 +10,8 @@ end
 function Autocmd.on(self, name, listener)
   if self:listener_count(name) == 0 then
     vim.api.nvim_exec(([[
-      augroup require.lank.tuil.vim.autocmd.%s
-        autocmd %s * lua require'lank.tuil.vim.autocmd':emit('%s')
+      augroup require.tuil.vim.autocmd.%s
+        autocmd %s * lua require'tuil.vim.autocmd':emit('%s')
       augroup END
     ]]):format(name, name, name), false)
   end
@@ -23,7 +23,7 @@ function Autocmd.off(self, name, ...)
 
   if self:listener_count(name) == 0 then
     vim.api.nvim_exec(([[
-      augroup require.lank.tuil.vim.autocmd.%s
+      augroup require.tuil.vim.autocmd.%s
         autocmd!
       augroup END
     ]]):format(name), false)

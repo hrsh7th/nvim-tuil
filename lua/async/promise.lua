@@ -108,7 +108,9 @@ function promise_reject(self, reason)
             self.onRejects[i](reason)
         end
         if not self.has_children then
-            vim.defer_fn(function() assert(false, reason) end, 0)
+            vim.defer_fn(function()
+                print(reason)
+            end, 0)
         end
     end
 end
